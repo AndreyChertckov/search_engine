@@ -1,0 +1,6 @@
+flask
+numpy
+nltk
+tqdm
+pymongo
+redis

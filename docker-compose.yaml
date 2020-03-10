@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+    searcher:
+        build: searcher
+
+    frontend:
+        build: frontend
+        ports:
+            - 6969:80
+
+    crawler:
+        build: crawler
+
+    worker:
+        build: worker
+
+    mongo:
+        image: mongo
+        environment:
+            - MONGO_INITDB_DATABASE=index
+            - MONGO_NON_ROOT_USERNAME=search_user
+            - MONGO_NON_ROOT_PASSWORD=qdrwbj123
+        volumes:
+            - ./init_mongo.js:/docker-entrypoint-initdb.d/init_mongo.js:ro
+
+    redis:
+        image: redis
+
